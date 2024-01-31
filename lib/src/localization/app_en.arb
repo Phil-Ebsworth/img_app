@@ -1,0 +1,6 @@
+{
+  "appTitle": "bildverarbeitung",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
