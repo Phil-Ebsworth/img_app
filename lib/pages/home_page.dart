@@ -20,26 +20,27 @@ class _HomePageState extends State<HomePage> {
         index: currentPage,
         children: pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 35,
-        selectedFontSize: 0,
-        unselectedFontSize: 0,
-        onTap: (value) {
-          setState(() {
-            currentPage = value;
-          });
-        },
-        currentIndex: currentPage,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: '',
-          ),
-        ],
+      drawer: Drawer(
+        child: ListView(
+          children: const [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+            ),
+            ListTile(
+              title: Text('Item 2'),
+            ),
+          ],
+        ),
+      ),
+      appBar: AppBar(
+        title: const Text('Home'),
+        centerTitle: true,
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:bildverarbeitung/src/widgets/image_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:bildverarbeitung/global_variables.dart';
 import 'package:bildverarbeitung/src/widgets/image_card.dart';
@@ -29,28 +30,6 @@ class _ImagesListState extends State<ImagesList> {
     return SafeArea(
       child: Column(
         children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  'Shoes\nCollection',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ),
-              const Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    prefixIcon: Icon(Icons.search),
-                    border: border,
-                    enabledBorder: border,
-                    focusedBorder: border,
-                  ),
-                ),
-              ),
-            ],
-          ),
           Expanded(
             child: LayoutBuilder(
               builder: (context, constraints) {
@@ -65,7 +44,19 @@ class _ImagesListState extends State<ImagesList> {
                     itemBuilder: (context, index) {
                       final image = images[index];
                       return GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ImageDetailsView(
+                                  title: image['title'] as String,
+                                  imageUrl: image['imageUrl'] as String,
+                                  id: image['id'] as String,
+                                );
+                              },
+                            ),
+                          );
+                        },
                         child: ImageCard(
                           title: image['title'] as String,
                           imageUrl: image['imageUrl'] as String,
